@@ -1,9 +1,13 @@
-void setup() {
-  // put your setup code here, to run once:
+#include <SoftwareSerial.h>
 
+SoftwareSerial mySerial(7, 6);  // TX, RX pins
+
+
+void setup() {
+  Serial.begin(9600);
+  mySerial.begin(9600);
 }
 
 void loop() {
-  // put your main code here, to run repeatedly:
-
+  mySerial.print(Serial.readStringUntil('\n'));
 }

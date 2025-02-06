@@ -1,7 +1,8 @@
 #include <SoftwareSerial.h>
 #include <rgb_lcd.h>
+#include <Wire.h>
 
-SoftwareSerial mySerial(10, 11); //RX, TX pins
+SoftwareSerial mySerial(6, 7); //RX, TX pins
 
 rgb_lcd lcd;
 
@@ -19,7 +20,9 @@ void loop() {
   // If information is ready to be read...
   if (mySerial.available() > 0) {
     lcd.clear();
+    lcd.setCursor(0, 1);
     String recievedMessage = mySerial.readString();
     lcd.print(recievedMessage);   // ... Display it on LCD
+    delay(1000);
   }
 }
